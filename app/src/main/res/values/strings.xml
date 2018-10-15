@@ -4,4 +4,5 @@
     <string name="main_button">Get stream from clipboard</string>
     <string name="error_activity_not_found">Couldn\'t play video format:\n\'%s\'\n\nPlease consider installing VLC</string>
     <string name="fail_to_get_stream">Failed to get stream</string>
+    <string name="no_clip">Clipboard is empty</string>
 </resources>

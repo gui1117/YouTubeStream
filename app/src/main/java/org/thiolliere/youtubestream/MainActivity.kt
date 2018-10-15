@@ -6,6 +6,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,9 +16,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getFromClipBoard(view: View) {
-        var intent = Intent(this, StreamActivity::class.java).apply {
+        val intent = Intent(this, StreamActivity::class.java).apply {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val link = clipboard.primaryClip.getItemAt(0).text
+            if (!clipboard.hasPrimaryClip()) {
+                Toast.makeText(applicationContext, getString(R.string.no_clip), Toast.LENGTH_SHORT).show()
+                return
+            }
+            val link = clipboard.primaryClip!!.getItemAt(0).text
             putExtra(Intent.EXTRA_TEXT, link)
         }
         startActivity(intent)
