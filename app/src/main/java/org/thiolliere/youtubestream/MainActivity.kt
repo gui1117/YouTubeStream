@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun getFromClipBoard(view: View) {
+    fun getFromClipBoard(@Suppress("UNUSED_PARAMETER") view: View) {
         val intent = Intent(this, StreamActivity::class.java).apply {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             if (!clipboard.hasPrimaryClip()) {
