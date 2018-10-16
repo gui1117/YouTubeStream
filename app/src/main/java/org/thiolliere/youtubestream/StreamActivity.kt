@@ -26,7 +26,7 @@ class StreamActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
         StrictMode.setThreadPolicy(policy)
 
-        var match = """^.*(?:(?:youtu\.be/|v/|vi/|u/w/|embed/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*""".toRegex()
+        var match = """^.*(?:(?:youtu\.be/|v/|vi/|u/w/|embed/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*""".toRegex()
                 .find(link)
 
         if (match == null) {
@@ -52,7 +52,7 @@ class StreamActivity : AppCompatActivity() {
             }
         }
 
-        match = """url_encoded_fmt_stream_map=([^\&]*)""".toRegex().find(response.toString())
+        match = """url_encoded_fmt_stream_map=([^&]*)""".toRegex().find(response.toString())
 
         if (match == null) {
             Toast.makeText(applicationContext, getString(R.string.fail_to_get_stream), Toast.LENGTH_SHORT).show()
@@ -69,12 +69,12 @@ class StreamActivity : AppCompatActivity() {
         }
 
         for (stream in URLDecoder.decode(streamsEncoded, "UTF-8").split(",")) {
-            val format = """type=([^#\&\?]*)""".toRegex().find(stream)!!.destructured.component1()
-            val quality = """quality=([^#\&\?]*)""".toRegex().find(stream)!!.destructured.component1()
-            val url = """url=([^#\&\?]*)""".toRegex().find(stream)!!.destructured.component1()
+            val stream_format = """type=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
+            //val quality = """quality=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
+            val stream_url = """url=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
 
             if (mainURL == null) {
-                mainURL = Pair(URLDecoder.decode(url, "UTF-8"), URLDecoder.decode(format,"UTF-8"))
+                mainURL = Pair(URLDecoder.decode(stream_url, "UTF-8"), URLDecoder.decode(stream_format,"UTF-8"))
             }
         }
 
