@@ -1,12 +1,12 @@
-# YoutubeStream
+# YouTubeStream
 
-This is an android application that allow you to play youtube videos in background.
+<a href="https://f-droid.org/en/packages/org.thiolliere.youtubestream/">
+  <img src="https://f-droid.org/badge/get-it-on.png" height="75">
+</a>
 
-## Usage
+Get YouTube Stream and open it with local application
 
-Share a youtube video with this application or use the clipboard to open the stream. VLC might be needed for the stream to be readable.
-
-Then inside VLC or whatever application that can read the stream you can put the video in background.
+Share a YouTube video with this application or use the clipboard, the application then get the stream and open it with local application, VLC is a compatible local application. The video is then handle by the local application which can allow to put in background (VLC does allow it).
 
 ## License
 [License]: #license
