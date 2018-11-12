@@ -1,12 +1,12 @@
 # YouTubeStream
 
-<a href="https://f-droid.org/en/packages/org.thiolliere.youtubestream/">
-  <img src="https://f-droid.org/badge/get-it-on.png" height="75">
-</a>
-
 Get YouTube Stream and open it with local application
 
 Share a YouTube video with this application or use the clipboard, the application then get the stream and open it with local application, VLC is a compatible local application. The video is then handle by the local application which can allow to put in background (VLC does allow it).
+
+[<img src="https://f-droid.org/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="75">](https://f-droid.org/packages/org.thiolliere.youtubestream/)
 
 ## License
 [License]: #license
