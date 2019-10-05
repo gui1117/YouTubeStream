@@ -18,8 +18,15 @@ class StreamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stream)
 
-        var mainURL: Pair<String, String>? = null
-        val link = intent.getStringExtra(Intent.EXTRA_TEXT)
+        val link = if (intent.getAction() == Intent.ACTION_VIEW) {
+            intent.getDataString()
+        } else if (intent.getAction() == Intent.ACTION_SEND) {
+            intent.getStringExtra(Intent.EXTRA_TEXT)
+        } else {
+            Log.e("Error", "unsupported action intent" + intent.getAction())
+            finish()
+            return
+        }
 
         Log.i("link", link as String)
 
@@ -68,6 +75,7 @@ class StreamActivity : AppCompatActivity() {
             return
         }
 
+        var mainURL: Pair<String, String>? = null
         for (stream in URLDecoder.decode(streamsEncoded, "UTF-8").split(",")) {
             val stream_format = """type=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
             //val quality = """quality=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
