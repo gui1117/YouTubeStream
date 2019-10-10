@@ -1,22 +1,24 @@
 # YouTubeStream
 
-Get YouTube Stream and open it with local application
+Get a YouTube Stream and open it with a local application.
 
-Share a YouTube video with this application or use the clipboard, the application then get the stream and open it with local application, VLC is a compatible local application. The video is then handle by the local application which can allow to put in background (VLC does allow it).
+Share a YouTube video with this application or use the clipboard.
+The application then retrieves the stream and opens it with a local application (VLC is a compatible local application).
+The video is then handled by the local application, which can allow to put it in the background (VLC allows it).
 
-[<img src="https://f-droid.org/badge/get-it-on.png"
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
      height="75">](https://f-droid.org/packages/org.thiolliere.youtubestream/)
+
 
 ## License
 [License]: #license
 
-Licensed under either of
+Licensed under either of these at your option.
 
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0), or
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or https://www.apache.org/licenses/LICENSE-2.0), or
+* MIT license ([LICENSE-MIT](LICENSE-MIT) or https://opensource.org/licenses/MIT)
 
-at your option.
 
 ### License of your contributions
 

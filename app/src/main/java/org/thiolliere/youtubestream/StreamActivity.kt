@@ -19,14 +19,14 @@ class StreamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stream)
 
-        val link = if (intent.getAction() == Intent.ACTION_VIEW) {
-            intent.getDataString()
-        } else if (intent.getAction() == Intent.ACTION_SEND) {
-            intent.getStringExtra(Intent.EXTRA_TEXT)
-        } else {
-            Log.e("Error", "unsupported action intent" + intent.getAction())
-            finish()
-            return
+        val link = when {
+            intent.action == Intent.ACTION_VIEW -> intent.dataString
+            intent.action == Intent.ACTION_SEND -> intent.getStringExtra(Intent.EXTRA_TEXT)
+            else -> {
+                Log.e("Error", "unsupported action intent" + intent.action)
+                finish()
+                return
+            }
         }
 
         Log.i("link", link as String)
@@ -78,12 +78,12 @@ class StreamActivity : AppCompatActivity() {
 
         var mainURL: Pair<String, String>? = null
         for (stream in URLDecoder.decode(streamsEncoded, "UTF-8").split(",")) {
-            val stream_format = """type=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
+            val streamFormat = """type=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
             //val quality = """quality=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
-            val stream_url = """url=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
+            val streamURL = """url=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
 
             if (mainURL == null) {
-                mainURL = Pair(URLDecoder.decode(stream_url, "UTF-8"), URLDecoder.decode(stream_format, "UTF-8"))
+                mainURL = Pair(URLDecoder.decode(streamURL, "UTF-8"), URLDecoder.decode(streamFormat, "UTF-8"))
             }
         }
 
