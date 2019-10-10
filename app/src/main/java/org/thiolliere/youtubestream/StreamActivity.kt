@@ -1,6 +1,7 @@
 package org.thiolliere.youtubestream
 
-import android.content.*
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.StrictMode
@@ -82,7 +83,7 @@ class StreamActivity : AppCompatActivity() {
             val stream_url = """url=([^#&?]*)""".toRegex().find(stream)!!.destructured.component1()
 
             if (mainURL == null) {
-                mainURL = Pair(URLDecoder.decode(stream_url, "UTF-8"), URLDecoder.decode(stream_format,"UTF-8"))
+                mainURL = Pair(URLDecoder.decode(stream_url, "UTF-8"), URLDecoder.decode(stream_format, "UTF-8"))
             }
         }
 
@@ -94,8 +95,7 @@ class StreamActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             intent.setDataAndType(Uri.parse(uri), format)
             startActivity(intent)
-        }
-        catch (e: ActivityNotFoundException) {
+        } catch (e: ActivityNotFoundException) {
             Toast.makeText(this, getString(R.string.error_activity_not_found).format(format), Toast.LENGTH_LONG).show()
         }
 
