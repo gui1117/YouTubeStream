@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             }
             val link = clipboard.primaryClip!!.getItemAt(0).text
             putExtra(Intent.EXTRA_TEXT, link)
+            setAction(Intent.ACTION_SEND)
         }
         startActivity(intent)
     }

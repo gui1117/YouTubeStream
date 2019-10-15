@@ -23,7 +23,7 @@ class StreamActivity : AppCompatActivity() {
             intent.action == Intent.ACTION_VIEW -> intent.dataString
             intent.action == Intent.ACTION_SEND -> intent.getStringExtra(Intent.EXTRA_TEXT)
             else -> {
-                Log.e("Error", "unsupported action intent" + intent.action)
+                Log.e("Error", "unsupported action intent: " + intent.action)
                 finish()
                 return
             }
